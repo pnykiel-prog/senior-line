@@ -74,8 +74,12 @@
       align-items:start !important;      /* number lines up with the heading, not the middle */
       text-align:left !important;
     }
-    [data-how-card]{grid-column:2 !important;text-align:left !important;}
-    [data-how-badge]{grid-column:1 !important;align-self:start !important;}
+    /* Pin both to row 1 so the number always sits beside its heading,
+       regardless of the alternating source order (odd rows list the card
+       first, which would otherwise push the lower-numbered badge column
+       onto a second grid row via sparse auto-placement). */
+    [data-how-card]{grid-column:2 !important;grid-row:1 !important;text-align:left !important;}
+    [data-how-badge]{grid-column:1 !important;grid-row:1 !important;align-self:start !important;}
     [data-how-badge] > span{width:48px !important;height:48px !important;font-size:1.2rem !important;}
     [data-how-row] > div:empty{display:none !important;}
     [data-how-svg]{display:none !important;}
