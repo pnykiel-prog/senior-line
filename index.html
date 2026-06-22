@@ -60,16 +60,26 @@
     [data-nav] a:last-child{border-bottom:none;}
     [data-nav-cta]{display:block !important;color:#b9942f !important;}
 
-    /* How it works: collapse 3-col lane to a single left rail */
-    [data-how-row]{grid-template-columns:56px 1fr !important;text-align:left !important;}
-    [data-how-card]{grid-column:2 !important;text-align:left !important;}
-    [data-how-badge]{grid-column:1 !important;}
-    [data-how-row] > div:empty{display:none !important;}
-    [data-how-svg]{display:none !important;}
-    [data-how-line]{display:block !important;}
-
     /* Hero: fade + shrink the background art so left-aligned text stays legible */
     [data-hero-img]{background-size:auto min(360px,46%) !important;opacity:.32 !important;}
+  }
+
+  /* "Six steps": collapse the alternating zig-zag + center lane into a single
+     left-rail timeline. Kicks in below 960px so phones in landscape (≈844–932px)
+     get the clean stacked layout too, not the cramped desktop zig-zag. */
+  @media (max-width:960px){
+    [data-how-row]{
+      grid-template-columns:56px 1fr !important;
+      column-gap:16px !important;
+      align-items:start !important;      /* number lines up with the heading, not the middle */
+      text-align:left !important;
+    }
+    [data-how-card]{grid-column:2 !important;text-align:left !important;}
+    [data-how-badge]{grid-column:1 !important;align-self:start !important;}
+    [data-how-badge] > span{width:48px !important;height:48px !important;font-size:1.2rem !important;}
+    [data-how-row] > div:empty{display:none !important;}
+    [data-how-svg]{display:none !important;}
+    [data-how-line]{display:block !important;left:28px !important;}
   }
   @media (prefers-reduced-motion: reduce){
     *{animation-duration:.001ms !important;animation-iteration-count:1 !important;}
