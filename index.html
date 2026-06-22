@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Senior Lane — Opieka blisko domu · Konsorcjum Bonam Curam</title>
+<meta name="description" content="Senior Lane to mieszkania z opieką blisko domu. Zbieramy grupę seniorów w Twojej okolicy, znajdujemy budynek niedaleko i tworzymy kameralne mieszkania z opieką. Działalność not-for-profit. Zapis bezpłatny i niezobowiązujący.">
+<meta property="og:title" content="Senior Lane — Opieka blisko domu">
+<meta property="og:description" content="Mieszkania z usługami opiekuńczymi w Twojej okolicy. Stały czynsz + usługi na życzenie. Działalność not-for-profit.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:image" content="assets/life-walk.png">
+<meta name="theme-color" content="#162640">
+<link rel="icon" type="image/png" href="assets/logo-konsorcjum.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:#f6f1e7;}
+  @keyframes slfloat{0%,100%{transform:translate(0,0)}50%{transform:translate(0,-18px)}}
+  @keyframes slreveal{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+  /* Hover / focus states (replace prototype's style-hover/style-focus) */
+  .nav-link:hover{color:#b9942f !important;}
+  .btn-gold,.btn-gold-sm,.btn-gold-block{transition:background .2s ease;}
+  .btn-gold:hover,.btn-gold-sm:hover,.btn-gold-block:hover{background:#a8852a !important;}
+  .btn-outline{transition:border-color .2s ease;}
+  .btn-outline:hover{border-color:#162640 !important;}
+  .inp{transition:border-color .2s ease;}
+  .inp:focus{border-color:#b9942f !important;}
+
+  /* Visible keyboard focus for a11y */
+  a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
+    outline:3px solid #b9942f;outline-offset:2px;border-radius:6px;
+  }
+
+  @media (max-width:768px){
+    [data-how-row]{grid-template-columns:56px 1fr !important;text-align:left !important;}
+    [data-how-card]{grid-column:2 !important;text-align:left !important;}
+    [data-how-badge]{grid-column:1 !important;}
+    [data-how-svg]{display:none !important;}
+    [data-how-line]{display:block !important;}
+    [data-nav]{display:none !important;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important;animation-iteration-count:1 !important;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+<div style="font-family:'Source Sans 3',system-ui,sans-serif;font-size:18px;line-height:1.62;color:#2c3447;background:#f6f1e7;-webkit-font-smoothing:antialiased;">
+
+  <!-- HEADER -->
+  <header style="position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(246,241,231,.85);border-bottom:1px solid #e3dccb;">
+    <div style="max-width:1180px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
+      <a href="#top" style="display:flex;align-items:center;gap:12px;text-decoration:none;flex:none;">
+        <img src="assets/logo-konsorcjum.png" alt="Logo Konsorcjum na rzecz Seniora Bonam Curam" width="50" height="50" style="width:50px;height:50px;flex:none;" />
+        <span style="display:flex;flex-direction:column;line-height:1.12;">
+          <span style="font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;color:#162640;letter-spacing:-.01em;">Senior Lane</span>
+          <span style="font-weight:600;font-size:.68rem;letter-spacing:.13em;color:#56607a;text-transform:uppercase;">Konsorcjum Bonam Curam</span>
+        </span>
+      </a>
+      <nav data-nav aria-label="Główna nawigacja" style="display:flex;align-items:center;gap:30px;">
+        <a class="nav-link" href="#dlaczego" style="text-decoration:none;color:#3c4658;font-weight:600;font-size:.98rem;white-space:nowrap;">Dlaczego</a>
+        <a class="nav-link" href="#jak" style="text-decoration:none;color:#3c4658;font-weight:600;font-size:.98rem;white-space:nowrap;">Jak to działa</a>
+        <a class="nav-link" href="#oferta" style="text-decoration:none;color:#3c4658;font-weight:600;font-size:.98rem;white-space:nowrap;">Oferta</a>
+        <a class="nav-link" href="#faq" style="text-decoration:none;color:#3c4658;font-weight:600;font-size:.98rem;white-space:nowrap;">FAQ</a>
+      </nav>
+      <a class="btn-gold-sm" href="#zapis" style="background:#b9942f;color:#fff;padding:11px 22px;border-radius:999px;font-weight:700;font-size:.95rem;text-decoration:none;box-shadow:0 6px 16px rgba(185,148,47,.28);white-space:nowrap;flex:none;">Zapisz się</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+  <section id="top" style="position:relative;overflow:hidden;text-align:left;min-height:clamp(600px,84vh,820px);display:flex;flex-direction:column;justify-content:center;padding:clamp(56px,8vw,104px) 24px;scroll-margin-top:80px;">
+    <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url('assets/hero-seniors.png');background-repeat:no-repeat;background-position:right bottom;background-size:auto min(620px,92%);opacity:.5;mix-blend-mode:multiply;"></div>
+    <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(90deg,#f6f1e7 0%,rgba(246,241,231,.97) 30%,rgba(246,241,231,.6) 48%,rgba(246,241,231,.12) 68%,rgba(246,241,231,.3) 100%);"></div>
+    <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(246,241,231,.5) 0%,transparent 22%,transparent 74%,rgba(246,241,231,.65) 100%);"></div>
+    <div aria-hidden="true" style="position:absolute;top:-120px;left:50%;transform:translateX(-60%);width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(205,171,82,.34),transparent 66%);filter:blur(12px);animation:slfloat 14s ease-in-out infinite;pointer-events:none;"></div>
+    <div aria-hidden="true" style="position:absolute;bottom:-160px;right:50%;transform:translateX(58%);width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(111,128,100,.26),transparent 64%);filter:blur(12px);animation:slfloat 18s ease-in-out infinite;pointer-events:none;"></div>
+    <div style="position:relative;z-index:2;max-width:1180px;margin:0 auto;width:100%;">
+      <p data-reveal style="margin:0 0 22px;text-transform:uppercase;letter-spacing:.18em;font-size:.82rem;font-weight:700;color:#b9942f;">Lokale z opieką w najbliższej okolicy</p>
+      <h1 data-reveal style="font-family:'Fraunces',serif;font-weight:400;font-size:clamp(2.6rem,7vw,5rem);line-height:1.04;letter-spacing:-.015em;color:#162640;margin:0 0 24px;max-width:640px;">Opieka <em style="font-style:italic;color:#b9942f;">blisko domu</em></h1>
+      <p data-reveal style="font-size:clamp(1.1rem,2vw,1.32rem);line-height:1.6;color:#3c4658;max-width:540px;margin:0 0 30px;">Zbieramy grupę seniorów w Twojej okolicy, znajdujemy budynek niedaleko i tworzymy w nim kameralne mieszkania z opieką. Twój bliski zostaje tam, gdzie ma rodzinę i swoje miejsca.</p>
+      <div data-reveal style="display:inline-flex;align-items:center;gap:9px;padding:9px 18px;border-radius:999px;border:1px solid #d8cdb0;background:rgba(252,250,244,.7);margin-bottom:34px;">
+        <span style="width:8px;height:8px;border-radius:50%;background:#6f8064;display:inline-block;flex:none;"></span>
+        <span style="font-weight:600;font-size:.95rem;color:#3c4658;">Prowadzimy działalność not-for-profit</span>
+      </div>
+      <div data-reveal style="display:flex;gap:14px;justify-content:flex-start;flex-wrap:wrap;">
+        <a class="btn-gold" href="#zapis" style="background:#b9942f;color:#fff;padding:15px 30px;border-radius:999px;font-weight:700;font-size:1.05rem;text-decoration:none;box-shadow:0 10px 24px rgba(185,148,47,.3);">Zapisz się — bez zobowiązań</a>
+        <a class="btn-outline" href="#jak" style="background:transparent;color:#162640;padding:15px 30px;border-radius:999px;font-weight:700;font-size:1.05rem;text-decoration:none;border:1.5px solid #c9bd9e;">Zobacz, jak to działa</a>
+      </div>
+      <p data-reveal style="margin:18px 0 0;font-size:.9rem;color:#8a8068;">Zapis jest bezpłatny i do niczego nie zobowiązuje.</p>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="dlaczego" style="background:#fbf7ee;border-top:1px solid #e9e1cd;border-bottom:1px solid #e9e1cd;padding:clamp(64px,9vw,116px) 24px;scroll-margin-top:78px;">
+    <div style="max-width:1180px;margin:0 auto;">
+      <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,52px);align-items:center;margin-bottom:52px;">
+        <div>
+          <p style="margin:0 0 14px;text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;font-weight:700;color:#b9942f;">Dlaczego Senior Lane</p>
+          <h2 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.1;color:#162640;margin:0 0 16px;letter-spacing:-.01em;">Opieka w Twojej okolicy</h2>
+          <p style="margin:0;font-size:1.12rem;color:#56607a;max-width:540px;">Nie wybieramy najbliższego wolnego miejsca w przypadkowym mieście. Najpierw słuchamy rodzin, a potem budujemy ofertę tam, gdzie te rodziny są.</p>
+        </div>
+        <img src="assets/life-walk.png" alt="Para seniorów na wspólnym spacerze" loading="lazy" width="1132" height="754" style="display:block;width:100%;height:clamp(260px,34vh,380px);object-fit:cover;object-position:center 18%;border-radius:18px;box-shadow:0 8px 28px rgba(22,38,64,.14);" />
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px;">
+        <div data-reveal style="background:#fffdf8;border:1px solid #e8e0cd;border-radius:16px;padding:30px;box-shadow:0 1px 2px rgba(22,38,64,.04);">
+          <div style="width:34px;height:3px;border-radius:2px;background:#b9942f;margin-bottom:18px;"></div>
+          <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:1.32rem;color:#162640;margin:0 0 10px;">Blisko domu</h3>
+          <p style="margin:0;color:#56607a;font-size:1.03rem;">Lokalizację otwieramy tam, gdzie mieszka grupa zainteresowanych rodzin. Senior zostaje w swoim regionie — blisko bliskich i znajomych miejsc.</p>
+        </div>
+        <div data-reveal style="background:#fffdf8;border:1px solid #e8e0cd;border-radius:16px;padding:30px;box-shadow:0 1px 2px rgba(22,38,64,.04);">
+          <div style="width:34px;height:3px;border-radius:2px;background:#6f8064;margin-bottom:18px;"></div>
+          <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:1.32rem;color:#162640;margin:0 0 10px;">Działalność not-for-profit</h3>
+          <p style="margin:0;color:#56607a;font-size:1.03rem;">Senior Lane prowadzimy w formule not-for-profit. Wypracowany zysk przeznaczamy na cele statutowe Fundacji DivideYou.</p>
+        </div>
+        <div data-reveal style="background:#fffdf8;border:1px solid #e8e0cd;border-radius:16px;padding:30px;box-shadow:0 1px 2px rgba(22,38,64,.04);">
+          <div style="width:34px;height:3px;border-radius:2px;background:#b9942f;margin-bottom:18px;"></div>
+          <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:1.32rem;color:#162640;margin:0 0 10px;">Niezależność, nie zamknięcie</h3>
+          <p style="margin:0;color:#56607a;font-size:1.03rem;">To mieszkania z usługami opiekuńczymi, a nie zamknięta placówka. Senior zachowuje samodzielność i dokupuje wsparcie wtedy, gdy go potrzebuje.</p>
+        </div>
+        <div data-reveal style="background:#fffdf8;border:1px solid #e8e0cd;border-radius:16px;padding:30px;box-shadow:0 1px 2px rgba(22,38,64,.04);">
+          <div style="width:34px;height:3px;border-radius:2px;background:#6f8064;margin-bottom:18px;"></div>
+          <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:1.32rem;color:#162640;margin:0 0 10px;">Bezpieczeństwo zawsze w cenie</h3>
+          <p style="margin:0;color:#56607a;font-size:1.03rem;">Całodobowa obecność personelu i system przywoławczy są w stałym czynszu. To podstawa, a nie usługa dodatkowa.</p>
+        </div>
+        <div data-reveal style="background:#fffdf8;border:1px solid #e8e0cd;border-radius:16px;padding:30px;box-shadow:0 1px 2px rgba(22,38,64,.04);">
+          <div style="width:34px;height:3px;border-radius:2px;background:#b9942f;margin-bottom:18px;"></div>
+          <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:1.32rem;color:#162640;margin:0 0 10px;">Zero ryzyka na starcie</h3>
+          <p style="margin:0;color:#56607a;font-size:1.03rem;">Zapis nic nie kosztuje. Kaucję rezerwacyjną zwracamy w całości, jeśli lokalizacja w Twojej okolicy ostatecznie nie ruszy.</p>
+        </div>
+        <div data-reveal style="background:#fffdf8;border:1px solid #e8e0cd;border-radius:16px;padding:30px;box-shadow:0 1px 2px rgba(22,38,64,.04);">
+          <div style="width:34px;height:3px;border-radius:2px;background:#6f8064;margin-bottom:18px;"></div>
+          <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:1.32rem;color:#162640;margin:0 0 10px;">Ludzie z tego samego regionu</h3>
+          <p style="margin:0;color:#56607a;font-size:1.03rem;">Mieszkańcy pochodzą z jednej okolicy — łatwiej o wspólny język, odwiedziny rodziny i poczucie wspólnoty.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="jak" data-how-section style="background:#f6f1e7;padding:clamp(64px,9vw,120px) 24px;scroll-margin-top:80px;">
+    <div style="max-width:1080px;margin:0 auto;">
+      <div data-reveal style="max-width:720px;margin:0 auto 58px;text-align:center;">
+        <p style="margin:0 0 14px;text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;font-weight:700;color:#b9942f;">Jak to działa</p>
+        <h2 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.1;color:#162640;margin:0 0 16px;letter-spacing:-.01em;">Sześć kroków do miejsca blisko domu</h2>
+        <p style="margin:0;font-size:1.12rem;color:#56607a;">Idziemy odwrotnie niż klasyczne domy opieki: najpierw zbieramy ludzi, dopiero potem dobieramy budynek pod konkretną grupę.</p>
+      </div>
+
+      <div data-how-steps style="position:relative;display:grid;gap:clamp(28px,4vw,46px);">
+        <div data-how-line aria-hidden="true" style="display:none;position:absolute;left:28px;top:0;bottom:0;width:2px;background:linear-gradient(#cdab52,#b9942f);transform:translateX(-50%);"></div>
+        <svg data-how-svg aria-hidden="true" preserveAspectRatio="none" width="88" style="position:absolute;left:50%;top:0;transform:translateX(-50%);overflow:visible;pointer-events:none;">
+          <path data-how-path fill="none" stroke="#b9942f" stroke-width="3" stroke-linecap="round" style="filter:drop-shadow(0 1px 2px rgba(185,148,47,.35));"></path>
+        </svg>
+
+        <div data-how-row data-reveal style="display:grid;grid-template-columns:1fr 88px 1fr;align-items:center;text-align:right;">
+          <div data-how-card style="grid-column:1;">
+            <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:1.34rem;color:#162640;margin:0 0 8px;">Zapisujesz się — bez zobowiązań</h3>
+            <p style="margin:0;color:#56607a;font-size:1.02rem;">Zostawiasz kontakt i wskazujesz swój region. To wszystko, czego potrzebujemy na start.</p>
+          </div>
+          <div data-how-badge style="grid-column:2;display:flex;justify-content:center;z-index:2;">
+            <span style="width:54px;height:54px;border-radius:50%;background:#162640;color:#cdab52;font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(22,38,64,.22);border:3px solid #f6f1e7;">1</span>
+          </div>
+          <div style="grid-column:3;"></div>
+        </div>
+
+        <div data-how-row data-reveal style="display:grid;grid-template-columns:1fr 88px 1fr;align-items:center;text-align:left;">
+          <div style="grid-column:1;"></div>
+          <div data-how-badge style="grid-column:2;display:flex;justify-content:center;z-index:2;">
+            <span style="width:54px;height:54px;border-radius:50%;background:#162640;color:#cdab52;font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(22,38,64,.22);border:3px solid #f6f1e7;">2</span>
+          </div>
+          <div data-how-card style="grid-column:3;">
+            <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:1.34rem;color:#162640;margin:0 0 8px;">Zbieramy grupę w Twojej okolicy</h3>
+            <p style="margin:0;color:#56607a;font-size:1.02rem;">Łączymy rodziny z tego samego regionu. Gdy zbierze się wystarczająca grupa — uruchamiamy lokalizację.</p>
+          </div>
+        </div>
+
+        <div data-how-row data-reveal style="display:grid;grid-template-columns:1fr 88px 1fr;align-items:center;text-align:right;">
+          <div data-how-card style="grid-column:1;">
+            <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:1.34rem;color:#162640;margin:0 0 8px;">Znajdujemy budynek blisko Was</h3>
+            <p style="margin:0;color:#56607a;font-size:1.02rem;">Wybieramy i wynajmujemy odpowiedni obiekt w okolicy grupy, żeby dojazd rodziny był krótki.</p>
+          </div>
+          <div data-how-badge style="grid-column:2;display:flex;justify-content:center;z-index:2;">
+            <span style="width:54px;height:54px;border-radius:50%;background:#162640;color:#cdab52;font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(22,38,64,.22);border:3px solid #f6f1e7;">3</span>
+          </div>
+          <div style="grid-column:3;"></div>
+        </div>
+
+        <div data-how-row data-reveal style="display:grid;grid-template-columns:1fr 88px 1fr;align-items:center;text-align:left;">
+          <div style="grid-column:1;"></div>
+          <div data-how-badge style="grid-column:2;display:flex;justify-content:center;z-index:2;">
+            <span style="width:54px;height:54px;border-radius:50%;background:#162640;color:#cdab52;font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(22,38,64,.22);border:3px solid #f6f1e7;">4</span>
+          </div>
+          <div data-how-card style="grid-column:3;">
+            <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:1.34rem;color:#162640;margin:0 0 8px;">Rezerwujesz miejsce</h3>
+            <p style="margin:0;color:#56607a;font-size:1.02rem;">Podpisujesz list intencyjny i wpłacasz zwrotną kaucję. Jeśli lokalizacja nie ruszy — kaucja wraca w całości.</p>
+          </div>
+        </div>
+
+        <div data-how-row data-reveal style="display:grid;grid-template-columns:1fr 88px 1fr;align-items:center;text-align:right;">
+          <div data-how-card style="grid-column:1;">
+            <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:1.34rem;color:#162640;margin:0 0 8px;">Urządzamy pokój i usługi</h3>
+            <p style="margin:0;color:#56607a;font-size:1.02rem;">Przygotowujemy pokój oraz pakiet usług pod konkretne potrzeby Twojego bliskiego.</p>
+          </div>
+          <div data-how-badge style="grid-column:2;display:flex;justify-content:center;z-index:2;">
+            <span style="width:54px;height:54px;border-radius:50%;background:#162640;color:#cdab52;font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(22,38,64,.22);border:3px solid #f6f1e7;">5</span>
+          </div>
+          <div style="grid-column:3;"></div>
+        </div>
+
+        <div data-how-row data-reveal style="display:grid;grid-template-columns:1fr 88px 1fr;align-items:center;text-align:left;">
+          <div style="grid-column:1;"></div>
+          <div data-how-badge style="grid-column:2;display:flex;justify-content:center;z-index:2;">
+            <span style="width:54px;height:54px;border-radius:50%;background:#b9942f;color:#fff;font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(185,148,47,.32);border:3px solid #f6f1e7;">6</span>
+          </div>
+          <div data-how-card style="grid-column:3;">
+            <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:1.34rem;color:#162640;margin:0 0 8px;">Wprowadzenie</h3>
+            <p style="margin:0;color:#56607a;font-size:1.02rem;">Senior zamieszkuje blisko domu, z opieką i bezpieczeństwem na wyciągnięcie ręki.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET (navy) -->
+  <section id="oferta" style="background:#162640;color:#eef1f6;padding:clamp(64px,9vw,120px) 24px;scroll-margin-top:78px;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,52px);align-items:center;margin-bottom:50px;">
+        <img src="assets/life-tablet.png" alt="Para seniorów wspólnie przegląda coś na tablecie" loading="lazy" width="1132" height="754" style="display:block;width:100%;height:clamp(260px,34vh,360px);object-fit:cover;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.28);" />
+        <div>
+          <p style="margin:0 0 14px;text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;font-weight:700;color:#cdab52;">Co dostajesz</p>
+          <h2 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.1;color:#fff;margin:0 0 16px;letter-spacing:-.01em;">Przejrzysty podział: stały czynsz i usługi na życzenie</h2>
+          <p style="margin:0;font-size:1.12rem;color:#b3bccd;">Bezpieczeństwo i dach nad głową są zawsze w cenie. Resztę dobierasz wtedy, gdy jest potrzebna — i tyle, ile potrzeba.</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;">
+        <div data-reveal style="background:#1f3556;border:1px solid #2c456b;border-radius:18px;padding:clamp(26px,3vw,38px);">
+          <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 13px;border-radius:999px;background:rgba(111,128,100,.22);border:1px solid rgba(111,128,100,.5);margin-bottom:22px;">
+            <span style="width:7px;height:7px;border-radius:50%;background:#9fb18f;display:inline-block;"></span>
+            <span style="font-weight:700;font-size:.8rem;letter-spacing:.04em;color:#bdcdb0;text-transform:uppercase;">w cenie</span>
+          </div>
+          <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:1.5rem;color:#fff;margin:0 0 18px;">W stałym czynszu</h3>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:13px;">
+            <li style="display:flex;gap:11px;align-items:flex-start;"><span aria-hidden="true" style="color:#9fb18f;flex:none;margin-top:2px;font-weight:700;">✓</span><span style="color:#d4dae6;">Umeblowany pokój 1- lub 2-osobowy, media i ogrzewanie</span></li>
+            <li style="display:flex;gap:11px;align-items:flex-start;"><span aria-hidden="true" style="color:#9fb18f;flex:none;margin-top:2px;font-weight:700;">✓</span><span style="color:#d4dae6;">Całodobowa obecność personelu i system przywoławczy</span></li>
+            <li style="display:flex;gap:11px;align-items:flex-start;"><span aria-hidden="true" style="color:#9fb18f;flex:none;margin-top:2px;font-weight:700;">✓</span><span style="color:#d4dae6;">Dostęp do części wspólnych: jadalnia, salon, ogród</span></li>
+            <li style="display:flex;gap:11px;align-items:flex-start;"><span aria-hidden="true" style="color:#9fb18f;flex:none;margin-top:2px;font-weight:700;">✓</span><span style="color:#d4dae6;">Podstawowy nadzór i wsparcie organizacyjne</span></li>
+            <li style="display:flex;gap:11px;align-items:flex-start;"><span aria-hidden="true" style="color:#9fb18f;flex:none;margin-top:2px;font-weight:700;">✓</span><span style="color:#d4dae6;">Sprzątanie przestrzeni wspólnych</span></li>
+          </ul>
+        </div>
+        <div data-reveal style="background:#1f3556;border:1px solid #2c456b;border-radius:18px;padding:clamp(26px,3vw,38px);">
+          <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 13px;border-radius:999px;background:rgba(205,171,82,.16);border:1px solid rgba(205,171,82,.5);margin-bottom:22px;">
+            <span style="width:7px;height:7px;border-radius:50%;background:#cdab52;display:inline-block;"></span>
+            <span style="font-weight:700;font-size:.8rem;letter-spacing:.04em;color:#d9c282;text-transform:uppercase;">à la carte</span>
+          </div>
+          <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:1.5rem;color:#fff;margin:0 0 18px;">Dokupujesz wg potrzeb</h3>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:13px;">
+            <li style="display:flex;gap:11px;align-items:flex-start;"><span aria-hidden="true" style="color:#cdab52;flex:none;margin-top:2px;font-weight:700;">+</span><span style="color:#d4dae6;">Posiłki — pełny pakiet, częściowy lub pojedyncze</span></li>
+            <li style="display:flex;gap:11px;align-items:flex-start;"><span aria-hidden="true" style="color:#cdab52;flex:none;margin-top:2px;font-weight:700;">+</span><span style="color:#d4dae6;">Sprzątanie pokoju w wybranej częstotliwości</span></li>
+            <li style="display:flex;gap:11px;align-items:flex-start;"><span aria-hidden="true" style="color:#cdab52;flex:none;margin-top:2px;font-weight:700;">+</span><span style="color:#d4dae6;">Pranie i prasowanie</span></li>
+            <li style="display:flex;gap:11px;align-items:flex-start;"><span aria-hidden="true" style="color:#cdab52;flex:none;margin-top:2px;font-weight:700;">+</span><span style="color:#d4dae6;">Pomoc osobista — higiena, ubieranie</span></li>
+            <li style="display:flex;gap:11px;align-items:flex-start;"><span aria-hidden="true" style="color:#cdab52;flex:none;margin-top:2px;font-weight:700;">+</span><span style="color:#d4dae6;">Rehabilitacja i fizjoterapia</span></li>
+            <li style="display:flex;gap:11px;align-items:flex-start;"><span aria-hidden="true" style="color:#cdab52;flex:none;margin-top:2px;font-weight:700;">+</span><span style="color:#d4dae6;">Zakupy, dostawa leków, asysta na wizyty lekarskie</span></li>
+            <li style="display:flex;gap:11px;align-items:flex-start;"><span aria-hidden="true" style="color:#cdab52;flex:none;margin-top:2px;font-weight:700;">+</span><span style="color:#d4dae6;">Transport</span></li>
+          </ul>
+        </div>
+      </div>
+      <p data-reveal style="margin:26px 0 0;font-size:.98rem;color:#9aa6bd;max-width:760px;">Konkretne stawki podajemy dla danej lokalizacji — zależą od budynku i regionu. Pokazujemy je w całości, bez ukrytych kosztów.</p>
+    </div>
+  </section>
+
+  <!-- NOT-FOR-PROFIT -->
+  <section style="background:#f6f1e7;padding:clamp(64px,9vw,116px) 24px;">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:44px;align-items:start;">
+      <div data-reveal>
+        <img src="assets/life-bench-summer.png" alt="Para seniorów odpoczywa na ławce w parku" loading="lazy" width="1132" height="754" style="display:block;width:100%;height:clamp(220px,30vh,300px);object-fit:cover;border-radius:16px;margin-bottom:28px;box-shadow:0 4px 16px rgba(22,38,64,.1);" />
+        <p style="margin:0 0 22px;text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;font-weight:700;color:#b9942f;">Działalność not-for-profit</p>
+        <blockquote style="margin:0;padding:6px 0 6px 28px;border-left:4px solid #b9942f;font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.4rem,2.8vw,2rem);line-height:1.32;color:#162640;font-style:italic;">Senior Lane to działalność not-for-profit. Wypracowany zysk w całości przeznaczamy na cele statutowe.</blockquote>
+      </div>
+      <div data-reveal style="background:#fffdf8;border:1px solid #e8e0cd;border-radius:18px;padding:clamp(26px,3vw,36px);box-shadow:0 2px 8px rgba(22,38,64,.05);">
+        <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:1.4rem;color:#162640;margin:0 0 10px;">Kto za tym stoi</h3>
+        <p style="margin:0 0 24px;color:#56607a;">Program prowadzi Konsorcjum Senior Lane Bonam Curam w formule not-for-profit.</p>
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <div style="display:flex;gap:16px;align-items:flex-start;padding-top:18px;border-top:1px solid #ece4d1;">
+            <span style="flex:none;font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:#162640;padding:5px 11px;border-radius:6px;margin-top:2px;">Lider</span>
+            <div><div style="font-weight:700;color:#162640;font-size:1.06rem;">Fundacja DivideYou</div><div style="color:#56607a;font-size:.98rem;">Organizacja prowadząca program</div></div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start;padding-top:18px;border-top:1px solid #ece4d1;">
+            <span style="flex:none;font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:#b9942f;padding:5px 11px;border-radius:6px;margin-top:2px;">Operator</span>
+            <div><div style="font-weight:700;color:#162640;font-size:1.06rem;">Konsorcjum Bonam Curam</div><div style="color:#56607a;font-size:.98rem;">Operator opieki senioralnej</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="background:#fbf7ee;border-top:1px solid #e9e1cd;padding:clamp(64px,9vw,116px) 24px;scroll-margin-top:78px;">
+    <div style="max-width:820px;margin:0 auto;">
+      <h2 data-reveal style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.1;color:#162640;margin:0 0 40px;letter-spacing:-.01em;text-align:center;">To, o co rodziny pytają najpierw</h2>
+      <div data-reveal style="background:#fffdf8;border:1px solid #e8e0cd;border-radius:16px;overflow:hidden;">
+
+        <div data-faq data-open="0" style="border-bottom:1px solid #ece4d1;">
+          <button data-faq-btn aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 24px;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit;color:#162640;">
+            <span style="font-weight:700;font-size:1.1rem;">Co, jeśli w mojej okolicy nie uzbiera się grupa?</span>
+            <span data-faq-icon aria-hidden="true" style="flex:none;font-size:1.6rem;color:#b9942f;line-height:1;transition:transform .3s ease;font-weight:300;">+</span>
+          </button>
+          <div data-faq-panel style="max-height:0;overflow:hidden;transition:max-height .4s ease;"><p style="margin:0;padding:0 24px 22px;color:#56607a;">Nie uruchamiamy wtedy lokalizacji, a wpłaconą kaucję rezerwacyjną zwracamy w całości. Sam zapis nie zobowiązuje Cię do niczego i jest bezpłatny.</p></div>
+        </div>
+
+        <div data-faq data-open="0" style="border-bottom:1px solid #ece4d1;">
+          <button data-faq-btn aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 24px;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit;color:#162640;">
+            <span style="font-weight:700;font-size:1.1rem;">Czy to zamknięta placówka albo dom opieki?</span>
+            <span data-faq-icon aria-hidden="true" style="flex:none;font-size:1.6rem;color:#b9942f;line-height:1;transition:transform .3s ease;font-weight:300;">+</span>
+          </button>
+          <div data-faq-panel style="max-height:0;overflow:hidden;transition:max-height .4s ease;"><p style="margin:0;padding:0 24px 22px;color:#56607a;">Nie. To mieszkania z usługami opiekuńczymi. Senior zachowuje samodzielność, a wsparcie dokupuje wtedy i w takim zakresie, w jakim jest potrzebne.</p></div>
+        </div>
+
+        <div data-faq data-open="0" style="border-bottom:1px solid #ece4d1;">
+          <button data-faq-btn aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 24px;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit;color:#162640;">
+            <span style="font-weight:700;font-size:1.1rem;">Czy mój bliski będzie bezpieczny?</span>
+            <span data-faq-icon aria-hidden="true" style="flex:none;font-size:1.6rem;color:#b9942f;line-height:1;transition:transform .3s ease;font-weight:300;">+</span>
+          </button>
+          <div data-faq-panel style="max-height:0;overflow:hidden;transition:max-height .4s ease;"><p style="margin:0;padding:0 24px 22px;color:#56607a;">Tak. Całodobowa obecność personelu oraz system przywoławczy są zawsze w cenie podstawowej — nie są usługą dodatkową, którą trzeba dokupować.</p></div>
+        </div>
+
+        <div data-faq data-open="0" style="border-bottom:1px solid #ece4d1;">
+          <button data-faq-btn aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 24px;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit;color:#162640;">
+            <span style="font-weight:700;font-size:1.1rem;">Ile to kosztuje?</span>
+            <span data-faq-icon aria-hidden="true" style="flex:none;font-size:1.6rem;color:#b9942f;line-height:1;transition:transform .3s ease;font-weight:300;">+</span>
+          </button>
+          <div data-faq-panel style="max-height:0;overflow:hidden;transition:max-height .4s ease;"><p style="margin:0;padding:0 24px 22px;color:#56607a;">Płaci się stały czynsz od miejsca oraz za usługi, z których faktycznie się korzysta. Konkretne stawki podajemy dla danej lokalizacji, bo zależą od budynku i regionu.</p></div>
+        </div>
+
+        <div data-faq data-open="0" style="border-bottom:1px solid #ece4d1;">
+          <button data-faq-btn aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 24px;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit;color:#162640;">
+            <span style="font-weight:700;font-size:1.1rem;">Czy muszę od razu płacić?</span>
+            <span data-faq-icon aria-hidden="true" style="flex:none;font-size:1.6rem;color:#b9942f;line-height:1;transition:transform .3s ease;font-weight:300;">+</span>
+          </button>
+          <div data-faq-panel style="max-height:0;overflow:hidden;transition:max-height .4s ease;"><p style="margin:0;padding:0 24px 22px;color:#56607a;">Nie. Zapis jest bezpłatny i niezobowiązujący. Zwrotną kaucję wpłaca się dopiero przy rezerwacji konkretnego miejsca w uruchamianej lokalizacji.</p></div>
+        </div>
+
+        <div data-faq data-open="0">
+          <button data-faq-btn aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 24px;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit;color:#162640;">
+            <span style="font-weight:700;font-size:1.1rem;">Kto prowadzi program?</span>
+            <span data-faq-icon aria-hidden="true" style="flex:none;font-size:1.6rem;color:#b9942f;line-height:1;transition:transform .3s ease;font-weight:300;">+</span>
+          </button>
+          <div data-faq-panel style="max-height:0;overflow:hidden;transition:max-height .4s ease;"><p style="margin:0;padding:0 24px 22px;color:#56607a;">Konsorcjum Senior Lane Bonam Curam: Fundacja DivideYou jako lider oraz Bonam Curam PSA jako operator opieki. Prowadzimy działalność not-for-profit.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section id="zapis" style="background:#162640;padding:clamp(64px,9vw,120px) 24px;scroll-margin-top:72px;position:relative;overflow:hidden;">
+    <div aria-hidden="true" style="position:absolute;top:-140px;right:-80px;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(205,171,82,.22),transparent 66%);pointer-events:none;"></div>
+    <div style="max-width:780px;margin:0 auto;position:relative;">
+      <div style="text-align:center;margin-bottom:40px;">
+        <h2 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.1;color:#fff;margin:0 0 14px;letter-spacing:-.01em;">Zapisz się — bez zobowiązań</h2>
+        <p style="margin:0 auto;font-size:1.1rem;color:#b3bccd;max-width:600px;">Zostaw kontakt i wskaż swój region. Odezwiemy się, gdy w Twojej okolicy uzbieramy grupę — albo wcześniej, jeśli będziemy mieli pytania.</p>
+      </div>
+
+      <form data-form novalidate style="background:#fcfaf4;border-radius:20px;padding:clamp(26px,4vw,42px);box-shadow:0 24px 60px rgba(0,0,0,.28);">
+        <p style="margin:0 0 18px;text-transform:uppercase;letter-spacing:.14em;font-size:.74rem;font-weight:700;color:#b9942f;">Dane kontaktowe</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+          <div style="grid-column:1/-1;">
+            <label for="f-name" style="display:block;font-weight:600;font-size:.95rem;color:#2c3447;margin-bottom:7px;">Imię i nazwisko <span style="color:#b9942f;">*</span></label>
+            <input id="f-name" class="inp" type="text" autocomplete="name" aria-describedby="e-name" style="width:100%;padding:13px 15px;border:1.5px solid #e3dccb;border-radius:10px;background:#fff;font-family:inherit;font-size:1.02rem;color:#2c3447;outline:none;" />
+            <p id="e-name" role="alert" style="display:none;margin:7px 0 0;color:#b4402f;font-size:.88rem;font-weight:600;">Podaj imię i nazwisko.</p>
+          </div>
+          <div>
+            <label for="f-phone" style="display:block;font-weight:600;font-size:.95rem;color:#2c3447;margin-bottom:7px;">Telefon</label>
+            <input id="f-phone" class="inp" type="tel" autocomplete="tel" style="width:100%;padding:13px 15px;border:1.5px solid #e3dccb;border-radius:10px;background:#fff;font-family:inherit;font-size:1.02rem;color:#2c3447;outline:none;" />
+          </div>
+          <div>
+            <label for="f-email" style="display:block;font-weight:600;font-size:.95rem;color:#2c3447;margin-bottom:7px;">E-mail</label>
+            <input id="f-email" class="inp" type="email" autocomplete="email" style="width:100%;padding:13px 15px;border:1.5px solid #e3dccb;border-radius:10px;background:#fff;font-family:inherit;font-size:1.02rem;color:#2c3447;outline:none;" />
+          </div>
+          <div style="grid-column:1/-1;">
+            <label for="f-city" style="display:block;font-weight:600;font-size:.95rem;color:#2c3447;margin-bottom:7px;">Miasto / region <span style="color:#b9942f;">*</span></label>
+            <input id="f-city" class="inp" type="text" autocomplete="address-level2" aria-describedby="e-city" style="width:100%;padding:13px 15px;border:1.5px solid #e3dccb;border-radius:10px;background:#fff;font-family:inherit;font-size:1.02rem;color:#2c3447;outline:none;" />
+            <p id="e-city" role="alert" style="display:none;margin:7px 0 0;color:#b4402f;font-size:.88rem;font-weight:600;">Podaj miasto lub region.</p>
+          </div>
+        </div>
+
+        <div style="margin-top:22px;">
+          <label style="display:block;font-weight:600;font-size:.95rem;color:#2c3447;margin-bottom:10px;">Zgłaszam dla</label>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;">
+            <button type="button" data-seg="forwho" aria-pressed="false" style="padding:10px 18px;border:1.5px solid #e3dccb;border-radius:999px;background:#fcfaf4;color:#2c3447;font-family:inherit;font-size:.98rem;font-weight:600;cursor:pointer;">rodzica / bliskiej osoby</button>
+            <button type="button" data-seg="forwho" aria-pressed="false" style="padding:10px 18px;border:1.5px solid #e3dccb;border-radius:999px;background:#fcfaf4;color:#2c3447;font-family:inherit;font-size:.98rem;font-weight:600;cursor:pointer;">siebie</button>
+            <button type="button" data-seg="forwho" aria-pressed="false" style="padding:10px 18px;border:1.5px solid #e3dccb;border-radius:999px;background:#fcfaf4;color:#2c3447;font-family:inherit;font-size:.98rem;font-weight:600;cursor:pointer;">jeszcze nie wiem</button>
+          </div>
+        </div>
+
+        <div style="height:1px;background:#ece4d1;margin:30px 0;"></div>
+
+        <p style="margin:0 0 6px;text-transform:uppercase;letter-spacing:.14em;font-size:.74rem;font-weight:700;color:#b9942f;">Zakres oczekiwanych usług</p>
+        <p style="margin:0 0 22px;color:#56607a;font-size:.96rem;">Orientacyjnie — pomaga nam dobrać budynek i ofertę. Nic nie jest wiążące.</p>
+
+        <div style="display:flex;flex-direction:column;gap:22px;">
+          <div>
+            <label style="display:block;font-weight:600;font-size:.95rem;color:#2c3447;margin-bottom:10px;">Typ pokoju</label>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;">
+              <button type="button" data-seg="room" aria-pressed="false" style="padding:10px 18px;border:1.5px solid #e3dccb;border-radius:999px;background:#fcfaf4;color:#2c3447;font-family:inherit;font-size:.98rem;font-weight:600;cursor:pointer;">1-osobowy</button>
+              <button type="button" data-seg="room" aria-pressed="false" style="padding:10px 18px;border:1.5px solid #e3dccb;border-radius:999px;background:#fcfaf4;color:#2c3447;font-family:inherit;font-size:.98rem;font-weight:600;cursor:pointer;">2-osobowy</button>
+              <button type="button" data-seg="room" aria-pressed="false" style="padding:10px 18px;border:1.5px solid #e3dccb;border-radius:999px;background:#fcfaf4;color:#2c3447;font-family:inherit;font-size:.98rem;font-weight:600;cursor:pointer;">bez preferencji</button>
+            </div>
+          </div>
+          <div>
+            <label style="display:block;font-weight:600;font-size:.95rem;color:#2c3447;margin-bottom:10px;">Samodzielność</label>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;">
+              <button type="button" data-seg="indep" aria-pressed="false" style="padding:10px 18px;border:1.5px solid #e3dccb;border-radius:999px;background:#fcfaf4;color:#2c3447;font-family:inherit;font-size:.98rem;font-weight:600;cursor:pointer;">samodzielny/-a</button>
+              <button type="button" data-seg="indep" aria-pressed="false" style="padding:10px 18px;border:1.5px solid #e3dccb;border-radius:999px;background:#fcfaf4;color:#2c3447;font-family:inherit;font-size:.98rem;font-weight:600;cursor:pointer;">potrzebuje częściowego wsparcia</button>
+              <button type="button" data-seg="indep" aria-pressed="false" style="padding:10px 18px;border:1.5px solid #e3dccb;border-radius:999px;background:#fcfaf4;color:#2c3447;font-family:inherit;font-size:.98rem;font-weight:600;cursor:pointer;">potrzebuje stałej pomocy</button>
+              <button type="button" data-seg="indep" aria-pressed="false" style="padding:10px 18px;border:1.5px solid #e3dccb;border-radius:999px;background:#fcfaf4;color:#2c3447;font-family:inherit;font-size:.98rem;font-weight:600;cursor:pointer;">jeszcze nie wiem</button>
+            </div>
+          </div>
+          <div>
+            <label style="display:block;font-weight:600;font-size:.95rem;color:#2c3447;margin-bottom:10px;">Zakres posiłków</label>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;">
+              <button type="button" data-seg="meals" aria-pressed="false" style="padding:10px 18px;border:1.5px solid #e3dccb;border-radius:999px;background:#fcfaf4;color:#2c3447;font-family:inherit;font-size:.98rem;font-weight:600;cursor:pointer;">pełny — 3 posiłki dziennie</button>
+              <button type="button" data-seg="meals" aria-pressed="false" style="padding:10px 18px;border:1.5px solid #e3dccb;border-radius:999px;background:#fcfaf4;color:#2c3447;font-family:inherit;font-size:.98rem;font-weight:600;cursor:pointer;">częściowy</button>
+              <button type="button" data-seg="meals" aria-pressed="false" style="padding:10px 18px;border:1.5px solid #e3dccb;border-radius:999px;background:#fcfaf4;color:#2c3447;font-family:inherit;font-size:.98rem;font-weight:600;cursor:pointer;">bez posiłków</button>
+              <button type="button" data-seg="meals" aria-pressed="false" style="padding:10px 18px;border:1.5px solid #e3dccb;border-radius:999px;background:#fcfaf4;color:#2c3447;font-family:inherit;font-size:.98rem;font-weight:600;cursor:pointer;">jeszcze nie wiem</button>
+            </div>
+          </div>
+          <div>
+            <label style="display:block;font-weight:600;font-size:.95rem;color:#2c3447;margin-bottom:10px;">Usługi dodatkowe</label>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;">
+              <button type="button" data-chip aria-pressed="false" style="padding:10px 18px;border:1.5px solid #e3dccb;border-radius:999px;background:#fcfaf4;color:#2c3447;font-family:inherit;font-size:.98rem;font-weight:600;cursor:pointer;">Sprzątanie pokoju</button>
+              <button type="button" data-chip aria-pressed="false" style="padding:10px 18px;border:1.5px solid #e3dccb;border-radius:999px;background:#fcfaf4;color:#2c3447;font-family:inherit;font-size:.98rem;font-weight:600;cursor:pointer;">Pranie i prasowanie</button>
+              <button type="button" data-chip aria-pressed="false" style="padding:10px 18px;border:1.5px solid #e3dccb;border-radius:999px;background:#fcfaf4;color:#2c3447;font-family:inherit;font-size:.98rem;font-weight:600;cursor:pointer;">Pomoc osobista</button>
+              <button type="button" data-chip aria-pressed="false" style="padding:10px 18px;border:1.5px solid #e3dccb;border-radius:999px;background:#fcfaf4;color:#2c3447;font-family:inherit;font-size:.98rem;font-weight:600;cursor:pointer;">Rehabilitacja</button>
+              <button type="button" data-chip aria-pressed="false" style="padding:10px 18px;border:1.5px solid #e3dccb;border-radius:999px;background:#fcfaf4;color:#2c3447;font-family:inherit;font-size:.98rem;font-weight:600;cursor:pointer;">Zakupy i leki</button>
+              <button type="button" data-chip aria-pressed="false" style="padding:10px 18px;border:1.5px solid #e3dccb;border-radius:999px;background:#fcfaf4;color:#2c3447;font-family:inherit;font-size:.98rem;font-weight:600;cursor:pointer;">Transport</button>
+            </div>
+          </div>
+          <div>
+            <label for="f-notes" style="display:block;font-weight:600;font-size:.95rem;color:#2c3447;margin-bottom:8px;">Uwagi <span style="color:#8a8068;font-weight:400;">(opcjonalne)</span></label>
+            <textarea id="f-notes" class="inp" rows="3" style="width:100%;padding:13px 15px;border:1.5px solid #e3dccb;border-radius:10px;background:#fff;font-family:inherit;font-size:1.02rem;color:#2c3447;outline:none;resize:vertical;"></textarea>
+          </div>
+        </div>
+
+        <div style="height:1px;background:#ece4d1;margin:30px 0;"></div>
+
+        <label style="display:flex;gap:12px;align-items:flex-start;cursor:pointer;">
+          <input id="f-consent" type="checkbox" aria-describedby="e-consent" style="margin-top:4px;width:20px;height:20px;flex:none;accent-color:#b9942f;cursor:pointer;" />
+          <span style="color:#56607a;font-size:.96rem;">Wyrażam zgodę na kontakt w sprawie programu Senior Lane. Administratorem danych jest Fundacja DivideYou; dane wykorzystamy wyłącznie w tym celu. <span style="color:#b9942f;">*</span></span>
+        </label>
+        <p id="e-consent" role="alert" style="display:none;margin:10px 0 0;color:#b4402f;font-size:.88rem;font-weight:600;">Zaznacz zgodę, aby się zapisać.</p>
+
+        <button type="submit" class="btn-gold-block" style="width:100%;margin-top:26px;background:#b9942f;color:#fff;padding:17px;border:none;border-radius:999px;font-family:inherit;font-weight:700;font-size:1.1rem;cursor:pointer;box-shadow:0 12px 28px rgba(185,148,47,.32);">Zapisz się — bez zobowiązań</button>
+      </form>
+
+      <div data-form-success style="display:none;background:#fcfaf4;border-radius:20px;padding:clamp(34px,5vw,56px);text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.28);">
+        <div style="width:64px;height:64px;border-radius:50%;background:rgba(111,128,100,.16);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;">
+          <span aria-hidden="true" style="color:#6f8064;font-size:2rem;font-weight:700;">✓</span>
+        </div>
+        <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:1.7rem;color:#162640;margin:0 0 12px;">Dziękujemy za zgłoszenie</h3>
+        <p style="margin:0 auto;color:#56607a;font-size:1.08rem;max-width:480px;">Zapisaliśmy Twój region. Odezwiemy się, gdy w Twojej okolicy zbierze się grupa — lub wcześniej, jeśli będziemy mieli pytania.</p>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="background:#101d33;color:#aeb9cd;padding:clamp(48px,7vw,80px) 24px 40px;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div style="display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:flex-start;padding-bottom:34px;border-bottom:1px solid #233452;">
+        <div style="max-width:420px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <span style="font-family:'Fraunces',serif;font-weight:600;font-size:1.35rem;color:#fff;">Senior Lane</span>
+            <span style="width:6px;height:6px;border-radius:50%;background:#b9942f;display:inline-block;"></span>
+            <span style="font-weight:600;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:#8a96ad;">Konsorcjum Bonam Curam</span>
+          </div>
+          <p style="margin:0;font-size:.98rem;color:#9aa6bd;">Program prowadzony w formule not-for-profit przez Fundację DivideYou (lider) i Bonam Curam PSA (operator opieki).</p>
+        </div>
+        <div>
+          <p style="margin:0 0 8px;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;font-weight:700;color:#8a96ad;">Kontakt</p>
+          <a href="mailto:p.nykiel@divideyou.com" style="color:#cdab52;text-decoration:none;font-weight:600;font-size:1.05rem;">p.nykiel@divideyou.com</a>
+        </div>
+      </div>
+      <p style="margin:26px 0 0;font-size:.86rem;color:#71809a;line-height:1.6;">© 2026 Konsorcjum Senior Lane Bonam Curam. Mieszkania z usługami opiekuńczymi. Treść informacyjna — nie stanowi oferty w rozumieniu Kodeksu cywilnego.</p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---- Reveal on scroll (progressive enhancement; content visible by default) ----
+  var reveals = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+  if (!reduce && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.style.animation = 'slreveal .8s cubic-bezier(.2,.6,.2,1) both';
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  }
+
+  // ---- Gold "lane" path ----
+  var stepsBox = document.querySelector('[data-how-steps]');
+  var svg = document.querySelector('[data-how-svg]');
+  var path = document.querySelector('[data-how-path]');
+  function buildPath() {
+    if (!stepsBox || !svg || !path) return;
+    var h = stepsBox.offsetHeight;
+    if (!h) return;
+    var w = 88, cx = w / 2, amp = 22, segs = 6, seg = h / segs;
+    svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+    svg.setAttribute('height', h);
+    var d = 'M ' + cx + ' 0';
+    for (var i = 0; i < segs; i++) {
+      var y0 = i * seg, y1 = (i + 1) * seg;
+      var dir = i % 2 === 0 ? 1 : -1;
+      d += ' C ' + (cx + amp * dir) + ' ' + (y0 + seg * 0.34) + ', ' + (cx + amp * dir) + ' ' + (y1 - seg * 0.34) + ', ' + cx + ' ' + y1;
+    }
+    path.setAttribute('d', d);
+    var len = path.getTotalLength();
+    path.style.strokeDasharray = len;
+    path.dataset.len = len;
+    if (reduce) { path.style.strokeDashoffset = '0'; } else { updateLane(); }
+  }
+  function updateLane() {
+    if (!path || !stepsBox || reduce) return;
+    var len = parseFloat(path.dataset.len || '0');
+    var rect = stepsBox.getBoundingClientRect();
+    var start = window.innerHeight * 0.85;
+    var p = (start - rect.top) / (rect.height * 0.85);
+    p = Math.max(0, Math.min(1, p));
+    path.style.strokeDashoffset = (len * (1 - p));
+  }
+  requestAnimationFrame(function () { requestAnimationFrame(buildPath); });
+  window.addEventListener('load', buildPath);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { setTimeout(buildPath, 60); });
+  window.addEventListener('scroll', updateLane, { passive: true });
+  var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(buildPath, 150); });
+
+  // ---- FAQ accordion (single-open) ----
+  var faqs = Array.prototype.slice.call(document.querySelectorAll('[data-faq]'));
+  faqs.forEach(function (item) {
+    var btn = item.querySelector('[data-faq-btn]');
+    var panel = item.querySelector('[data-faq-panel]');
+    var icon = item.querySelector('[data-faq-icon]');
+    btn.addEventListener('click', function () {
+      var isOpen = item.getAttribute('data-open') === '1';
+      faqs.forEach(function (it) {
+        it.setAttribute('data-open', '0');
+        var p = it.querySelector('[data-faq-panel]'); if (p) p.style.maxHeight = '0px';
+        var ic = it.querySelector('[data-faq-icon]'); if (ic) ic.style.transform = 'rotate(0deg)';
+        var b = it.querySelector('[data-faq-btn]'); if (b) b.setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.setAttribute('data-open', '1');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+        icon.style.transform = 'rotate(45deg)';
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // ---- Multi-select chips ----
+  document.querySelectorAll('[data-chip]').forEach(function (c) {
+    c.addEventListener('click', function () {
+      var on = c.getAttribute('aria-pressed') === 'true';
+      c.setAttribute('aria-pressed', String(!on));
+      if (!on) { c.style.background = '#162640'; c.style.color = '#fff'; c.style.borderColor = '#162640'; }
+      else { c.style.background = '#fcfaf4'; c.style.color = '#2c3447'; c.style.borderColor = '#e3dccb'; }
+    });
+  });
+
+  // ---- Single-select segmented groups ----
+  document.querySelectorAll('[data-seg]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var group = b.getAttribute('data-seg');
+      document.querySelectorAll('[data-seg="' + group + '"]').forEach(function (x) {
+        x.setAttribute('aria-pressed', 'false');
+        x.style.background = '#fcfaf4'; x.style.color = '#2c3447'; x.style.borderColor = '#e3dccb';
+      });
+      b.setAttribute('aria-pressed', 'true');
+      b.style.background = '#162640'; b.style.color = '#fff'; b.style.borderColor = '#162640';
+    });
+  });
+
+  // ---- Form submit (preview: validate + show confirmation panel) ----
+  var form = document.querySelector('[data-form]');
+  var success = document.querySelector('[data-form-success]');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var ok = true;
+      [['f-name', 'e-name'], ['f-city', 'e-city']].forEach(function (pair) {
+        var el = document.getElementById(pair[0]); var err = document.getElementById(pair[1]);
+        if (!el.value.trim()) { ok = false; if (err) err.style.display = 'block'; el.style.borderColor = '#b4402f'; el.setAttribute('aria-invalid', 'true'); }
+        else { if (err) err.style.display = 'none'; el.style.borderColor = '#e3dccb'; el.removeAttribute('aria-invalid'); }
+      });
+      var consent = document.getElementById('f-consent'); var ec = document.getElementById('e-consent');
+      if (!consent.checked) { ok = false; if (ec) ec.style.display = 'block'; } else if (ec) ec.style.display = 'none';
+      if (ok && success) {
+        form.style.display = 'none';
+        success.style.display = 'block';
+        success.setAttribute('tabindex', '-1');
+        success.focus();
+        success.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>
