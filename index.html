@@ -18,7 +18,8 @@
 <style>
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{margin:0;background:#f6f1e7;}
+  body{margin:0;background:#f6f1e7;overflow-x:clip;}
+  img{max-width:100%;}
   @keyframes slfloat{0%,100%{transform:translate(0,0)}50%{transform:translate(0,-18px)}}
   @keyframes slreveal{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 
@@ -36,13 +37,39 @@
     outline:3px solid #b9942f;outline-offset:2px;border-radius:6px;
   }
 
+  /* Form controls never overflow the viewport; comfortable tap targets */
+  [data-seg],[data-chip]{max-width:100%;min-height:44px;}
+
+  /* Mobile menu toggle + in-menu CTA link are desktop-hidden by default */
+  [data-menu-toggle]{display:none;}
+  [data-nav-cta]{display:none;}
+
   @media (max-width:768px){
+    /* Header: compact padding, swap inline nav for a dropdown + hamburger */
+    [data-inner]{padding:10px 16px !important;}
+    [data-header-cta]{display:none !important;}
+    [data-menu-toggle]{display:inline-flex !important;}
+    [data-nav]{
+      display:none !important;position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;align-items:stretch;gap:0;
+      background:rgba(246,241,231,.98);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+      border-bottom:1px solid #e3dccb;padding:6px 16px 14px;box-shadow:0 14px 26px rgba(22,38,64,.12);
+    }
+    [data-nav].is-open{display:flex !important;}
+    [data-nav] a{padding:14px 6px;font-size:1.08rem;border-bottom:1px solid #ece4d1;white-space:normal !important;}
+    [data-nav] a:last-child{border-bottom:none;}
+    [data-nav-cta]{display:block !important;color:#b9942f !important;}
+
+    /* How it works: collapse 3-col lane to a single left rail */
     [data-how-row]{grid-template-columns:56px 1fr !important;text-align:left !important;}
     [data-how-card]{grid-column:2 !important;text-align:left !important;}
     [data-how-badge]{grid-column:1 !important;}
+    [data-how-row] > div:empty{display:none !important;}
     [data-how-svg]{display:none !important;}
     [data-how-line]{display:block !important;}
-    [data-nav]{display:none !important;}
+
+    /* Hero: fade + shrink the background art so left-aligned text stays legible */
+    [data-hero-img]{background-size:auto min(360px,46%) !important;opacity:.32 !important;}
   }
   @media (prefers-reduced-motion: reduce){
     *{animation-duration:.001ms !important;animation-iteration-count:1 !important;}
@@ -55,28 +82,36 @@
 
   <!-- HEADER -->
   <header style="position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(246,241,231,.85);border-bottom:1px solid #e3dccb;">
-    <div style="max-width:1180px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
-      <a href="#top" style="display:flex;align-items:center;gap:12px;text-decoration:none;flex:none;">
+    <div data-inner style="max-width:1180px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;">
+      <a href="#top" style="display:flex;align-items:center;gap:12px;text-decoration:none;flex:none;min-width:0;">
         <img src="assets/logo-konsorcjum.png" alt="Logo Konsorcjum na rzecz Seniora Bonam Curam" width="50" height="50" style="width:50px;height:50px;flex:none;" />
-        <span style="display:flex;flex-direction:column;line-height:1.12;">
+        <span style="display:flex;flex-direction:column;line-height:1.12;min-width:0;">
           <span style="font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;color:#162640;letter-spacing:-.01em;">Senior Lane</span>
           <span style="font-weight:600;font-size:.68rem;letter-spacing:.13em;color:#56607a;text-transform:uppercase;">Konsorcjum Bonam Curam</span>
         </span>
       </a>
-      <nav data-nav aria-label="Główna nawigacja" style="display:flex;align-items:center;gap:30px;">
+      <nav id="main-nav" data-nav aria-label="Główna nawigacja" style="display:flex;align-items:center;gap:30px;">
         <a class="nav-link" href="#dlaczego" style="text-decoration:none;color:#3c4658;font-weight:600;font-size:.98rem;white-space:nowrap;">Dlaczego</a>
         <a class="nav-link" href="#jak" style="text-decoration:none;color:#3c4658;font-weight:600;font-size:.98rem;white-space:nowrap;">Jak to działa</a>
         <a class="nav-link" href="#oferta" style="text-decoration:none;color:#3c4658;font-weight:600;font-size:.98rem;white-space:nowrap;">Oferta</a>
         <a class="nav-link" href="#faq" style="text-decoration:none;color:#3c4658;font-weight:600;font-size:.98rem;white-space:nowrap;">FAQ</a>
+        <a class="nav-link" data-nav-cta href="#zapis" style="text-decoration:none;color:#b9942f;font-weight:700;font-size:1.08rem;white-space:nowrap;">Zapisz się →</a>
       </nav>
-      <a class="btn-gold-sm" href="#zapis" style="background:#b9942f;color:#fff;padding:11px 22px;border-radius:999px;font-weight:700;font-size:.95rem;text-decoration:none;box-shadow:0 6px 16px rgba(185,148,47,.28);white-space:nowrap;flex:none;">Zapisz się</a>
+      <a class="btn-gold-sm" data-header-cta href="#zapis" style="background:#b9942f;color:#fff;padding:11px 22px;border-radius:999px;font-weight:700;font-size:.95rem;text-decoration:none;box-shadow:0 6px 16px rgba(185,148,47,.28);white-space:nowrap;flex:none;">Zapisz się</a>
+      <button type="button" data-menu-toggle aria-label="Otwórz menu" aria-expanded="false" aria-controls="main-nav" style="flex:none;width:46px;height:46px;align-items:center;justify-content:center;background:transparent;border:1.5px solid #d8cdb0;border-radius:12px;cursor:pointer;color:#162640;padding:0;">
+        <svg data-menu-icon width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="7" x2="21" y2="7"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="17" x2="21" y2="17"></line>
+        </svg>
+      </button>
     </div>
   </header>
 
   <!-- HERO -->
   <main>
   <section id="top" style="position:relative;overflow:hidden;text-align:left;min-height:clamp(600px,84vh,820px);display:flex;flex-direction:column;justify-content:center;padding:clamp(56px,8vw,104px) 24px;scroll-margin-top:80px;">
-    <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url('assets/hero-seniors.png');background-repeat:no-repeat;background-position:right bottom;background-size:auto min(620px,92%);opacity:.5;mix-blend-mode:multiply;"></div>
+    <div data-hero-img aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url('assets/hero-seniors.png');background-repeat:no-repeat;background-position:right bottom;background-size:auto min(620px,92%);opacity:.5;mix-blend-mode:multiply;"></div>
     <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(90deg,#f6f1e7 0%,rgba(246,241,231,.97) 30%,rgba(246,241,231,.6) 48%,rgba(246,241,231,.12) 68%,rgba(246,241,231,.3) 100%);"></div>
     <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(246,241,231,.5) 0%,transparent 22%,transparent 74%,rgba(246,241,231,.65) 100%);"></div>
     <div aria-hidden="true" style="position:absolute;top:-120px;left:50%;transform:translateX(-60%);width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(205,171,82,.34),transparent 66%);filter:blur(12px);animation:slfloat 14s ease-in-out infinite;pointer-events:none;"></div>
@@ -100,7 +135,7 @@
   <!-- WHY -->
   <section id="dlaczego" style="background:#fbf7ee;border-top:1px solid #e9e1cd;border-bottom:1px solid #e9e1cd;padding:clamp(64px,9vw,116px) 24px;scroll-margin-top:78px;">
     <div style="max-width:1180px;margin:0 auto;">
-      <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,52px);align-items:center;margin-bottom:52px;">
+      <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(28px,4vw,52px);align-items:center;margin-bottom:52px;">
         <div>
           <p style="margin:0 0 14px;text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;font-weight:700;color:#b9942f;">Dlaczego Senior Lane</p>
           <h2 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.1;color:#162640;margin:0 0 16px;letter-spacing:-.01em;">Opieka w Twojej okolicy</h2>
@@ -108,7 +143,7 @@
         </div>
         <img src="assets/life-walk.png" alt="Para seniorów na wspólnym spacerze" loading="lazy" width="1132" height="754" style="display:block;width:100%;height:clamp(260px,34vh,380px);object-fit:cover;object-position:center 18%;border-radius:18px;box-shadow:0 8px 28px rgba(22,38,64,.14);" />
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:22px;">
         <div data-reveal style="background:#fffdf8;border:1px solid #e8e0cd;border-radius:16px;padding:30px;box-shadow:0 1px 2px rgba(22,38,64,.04);">
           <div style="width:34px;height:3px;border-radius:2px;background:#b9942f;margin-bottom:18px;"></div>
           <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:1.32rem;color:#162640;margin:0 0 10px;">Blisko domu</h3>
@@ -230,7 +265,7 @@
   <!-- WHAT YOU GET (navy) -->
   <section id="oferta" style="background:#162640;color:#eef1f6;padding:clamp(64px,9vw,120px) 24px;scroll-margin-top:78px;">
     <div style="max-width:1100px;margin:0 auto;">
-      <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,52px);align-items:center;margin-bottom:50px;">
+      <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(28px,4vw,52px);align-items:center;margin-bottom:50px;">
         <img src="assets/life-tablet.png" alt="Para seniorów wspólnie przegląda coś na tablecie" loading="lazy" width="1132" height="754" style="display:block;width:100%;height:clamp(260px,34vh,360px);object-fit:cover;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.28);" />
         <div>
           <p style="margin:0 0 14px;text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;font-weight:700;color:#cdab52;">Co dostajesz</p>
@@ -238,7 +273,7 @@
           <p style="margin:0;font-size:1.12rem;color:#b3bccd;">Bezpieczeństwo i dach nad głową są zawsze w cenie. Resztę dobierasz wtedy, gdy jest potrzebna — i tyle, ile potrzeba.</p>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:24px;">
         <div data-reveal style="background:#1f3556;border:1px solid #2c456b;border-radius:18px;padding:clamp(26px,3vw,38px);">
           <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 13px;border-radius:999px;background:rgba(111,128,100,.22);border:1px solid rgba(111,128,100,.5);margin-bottom:22px;">
             <span style="width:7px;height:7px;border-radius:50%;background:#9fb18f;display:inline-block;"></span>
@@ -276,7 +311,7 @@
 
   <!-- NOT-FOR-PROFIT -->
   <section style="background:#f6f1e7;padding:clamp(64px,9vw,116px) 24px;">
-    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:44px;align-items:start;">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:44px;align-items:start;">
       <div data-reveal>
         <img src="assets/life-bench-summer.png" alt="Para seniorów odpoczywa na ławce w parku" loading="lazy" width="1132" height="754" style="display:block;width:100%;height:clamp(220px,30vh,300px);object-fit:cover;border-radius:16px;margin-bottom:28px;box-shadow:0 4px 16px rgba(22,38,64,.1);" />
         <p style="margin:0 0 22px;text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;font-weight:700;color:#b9942f;">Działalność not-for-profit</p>
@@ -367,7 +402,7 @@
 
       <form data-form novalidate style="background:#fcfaf4;border-radius:20px;padding:clamp(26px,4vw,42px);box-shadow:0 24px 60px rgba(0,0,0,.28);">
         <p style="margin:0 0 18px;text-transform:uppercase;letter-spacing:.14em;font-size:.74rem;font-weight:700;color:#b9942f;">Dane kontaktowe</p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:16px;">
           <div style="grid-column:1/-1;">
             <label for="f-name" style="display:block;font-weight:600;font-size:.95rem;color:#2c3447;margin-bottom:7px;">Imię i nazwisko <span style="color:#b9942f;">*</span></label>
             <input id="f-name" class="inp" type="text" autocomplete="name" aria-describedby="e-name" style="width:100%;padding:13px 15px;border:1.5px solid #e3dccb;border-radius:10px;background:#fff;font-family:inherit;font-size:1.02rem;color:#2c3447;outline:none;" />
@@ -494,6 +529,46 @@
 <script>
 (function () {
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---- Mobile nav (hamburger) ----
+  var menuToggle = document.querySelector('[data-menu-toggle]');
+  var nav = document.querySelector('[data-nav]');
+  var menuIcon = document.querySelector('[data-menu-icon]');
+  function setMenu(open) {
+    if (!nav || !menuToggle) return;
+    nav.classList.toggle('is-open', open);
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.setAttribute('aria-label', open ? 'Zamknij menu' : 'Otwórz menu');
+    if (menuIcon) {
+      // hamburger <-> X
+      menuIcon.innerHTML = open
+        ? '<line x1="5" y1="5" x2="19" y2="19"></line><line x1="19" y1="5" x2="5" y2="19"></line>'
+        : '<line x1="3" y1="7" x2="21" y2="7"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="17" x2="21" y2="17"></line>';
+    }
+  }
+  if (menuToggle && nav) {
+    menuToggle.addEventListener('click', function () {
+      setMenu(nav.classList.contains('is-open') === false);
+    });
+    // Close after picking a destination
+    nav.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { setMenu(false); });
+    });
+    // Close on Escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setMenu(false);
+    });
+    // Close on outside click
+    document.addEventListener('click', function (e) {
+      if (nav.classList.contains('is-open') && !nav.contains(e.target) && !menuToggle.contains(e.target)) {
+        setMenu(false);
+      }
+    });
+    // Reset when leaving mobile width
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 768) setMenu(false);
+    });
+  }
 
   // ---- Reveal on scroll (progressive enhancement; content visible by default) ----
   var reveals = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
